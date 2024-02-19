@@ -13,34 +13,35 @@ In this assignment, you will learn more about asymptotic notation, parallelism, 
 
   - 1a. Is $2^{n+1} \in O(2^n)$? Why or why not? 
 .  
-.  
+.  Yes, since 2^{n+1} can be written in 2*2^{n} and it's in O(2^n)
 .  
 .  
 . 
   - 1b. Is $2^{2^n} \in O(2^n)$? Why or why not?     
-.  
+.
+   No, since we can't find a constant factor c multiplied 2^n to achive 2^2^n. So, 2^2^n isn't in O(2^n)
 .  
 .  
 .  
 .  
   - 1c. Is $n^{1.01} \in O(\mathrm{log}^2 n)$?    
 .  
-.  
+.  No, because n^1.01 is belong to O(nlogn) instead of O(logn^2). n^1.01 increase faster than O(logn^2)
 .  
 .  
 
   - 1d. Is $n^{1.01} \in \Omega(\mathrm{log}^2 n)$?  
 .  
-.  
+.  Yes, since n^1.01 increase faster than O(logn^2). So, n^1.01 is in Omega(logn^2)
 .  
 .  
   - 1e. Is $\sqrt{n} \in O((\mathrm{log} n)^3)$?  
 .  
-.  
+.  No, since n^(1/2) is increase faster than log function.
 .  
 .  
   - 1f. Is $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$?  
-.  
+.  Yes, since square of n increase faster than log function
 
 
 2. **SPARC to Python** (12 pts)
@@ -60,7 +61,9 @@ $$
 
   - 2a. (6 pts) Translate this to Python code -- fill in the `def foo` method in `main.py`  
 
-  - 2b. (6 pts) What does this function do, in your own words?  
+  - 2b. (6 pts) What does this function do, in your own words?
+
+  the input is a integer x and this function will output the xth value in Fibonacci sequence. the base case is that the first and second number of Fibonacci the is 0 and 1. For each recursiion, the next value equal to the sum of previous two values.
 
 .  
 .  
@@ -92,7 +95,7 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
 
   - 3b. (4 pts) What is the Work and Span of this implementation?  
 
-.  
+.  Both the work and span are O(n)
 .  
 .  
 .  
@@ -106,8 +109,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
   - 3c. (7 pts) Next, implement a `longest_run_recursive`, a recursive, divide and conquer implementation. This is analogous to our implementation of `sum_list_recursive`. To do so, you will need to think about how to combine partial solutions from each recursive call. Make use of the provided class `Result`.   
 
   - 3d. (4 pts) What is the Work and Span of this sequential algorithm?  
-.  
-.  
+.  it's a sequential algorithm
+.  Both the work and span are O(n)
 .  
 .  
 .  
@@ -121,7 +124,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
 
   - 3e. (4 pts) Assume that we parallelize in a similar way we did with `sum_list_recursive`. That is, each recursive call spawns a new thread. What is the Work and Span of this algorithm?  
 
-.  
+.  the work is O(n) since each element still need be considered once.
+  the span is O(logn) since it's a parallel computing. Each recursive call spawns a new thread. the depth of this recursion is logn
 .  
 .  
 .  
